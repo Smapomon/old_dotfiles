@@ -16,7 +16,10 @@ main = ubuntu
 Installation processes
 ### Importing dotfiles to system
 ```console
-git clone --separate-git-dir=~/.myconf git@github.com:Smapomon/dotfiles.git ~
+git clone --separate-git-dir=~/.myconf git@github.com:Smapomon/dotfiles.git $HOME/myconf-tmp
+cp ~/myconf-tmp/.gitmodules ~  # If you use Git submodules
+rm -r ~/myconf-tmp/
+alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 ```
 
 ### Making a new dotfiles repo
