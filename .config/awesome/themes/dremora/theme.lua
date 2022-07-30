@@ -299,14 +299,14 @@ function theme.at_screen_connect(s)
         awful.tag.add("chat", {
             icon     = "/home/smapo/.config/awesome/icons/chat.png",
             layout   = awful.layout.layouts[1],
-            screen   = s,
-            selected = true
+            screen   = s
         })
 
         awful.tag.add("web", {
             icon   = "/home/smapo/.config/awesome/icons/web.png",
             layout = awful.layout.layouts[1],
-            screen = s
+            screen = s,
+            selected = true
         })
 
     else

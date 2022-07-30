@@ -753,7 +753,8 @@ awful.rules.rules = {
             -- might be best to just make client open function
             -- for this eventually since stickyness is cancer
             class = {
-                "Terminator"
+                "Terminator",
+                "kitty"
             }
         },
         properties = { sticky = false }
@@ -778,10 +779,10 @@ awful.rules.rules = {
         properties = { screen = 1, tag = "chat" }
     },
 
-    -- Set discord to always map on the chat tag on screen 3
+    -- Set discord to always map on the web tag on screen 3
     {
         rule = { class = "discord" },
-        properties = { screen = 1, tag = "chat" }
+        properties = { screen = 1, tag = "web" }
     },
 
     -- Set chrome to always map on the web tag on screen 3
@@ -861,6 +862,7 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 client.connect_signal("focus", function(c)
+    --For debugging
     --naughty.notify {
         --title = "Window Props",
         --text = c.class
@@ -889,11 +891,5 @@ awful.spawn.with_shell("/home/smapo/autostart_apps.sh")
 
 -- Set autolock for display
 awful.spawn.with_shell("xautolock -time 15 -locker /home/smapo/set_lockscreen.sh")
-
---awful.spawn.with_shell("whatsie")
---awful.spawn.with_shell("spotify")
---awful.spawn.with_shell("slack")
---awful.spawn.with_shell("discord")
-
 
 -- }}}
