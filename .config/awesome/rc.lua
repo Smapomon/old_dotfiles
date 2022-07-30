@@ -100,7 +100,7 @@ local themes = {
 local chosen_theme = themes[3]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "terminator"
+local terminal     = "kitty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
@@ -721,7 +721,8 @@ awful.rules.rules = {
             "Slack",
             "teams",
             "rambox",
-            "Gnome-calculator"
+            "Gnome-calculator",
+            "Solaar"
         },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -742,7 +743,7 @@ awful.rules.rules = {
     },
 
     {
-        rule       = { class     = "Terminator" },
+        rule       = { class     = "Terminator", "kitty" },
         properties = { maximized = false }
     },
 
@@ -761,31 +762,37 @@ awful.rules.rules = {
     },
 
 
-    -- Set spotify to always map on the main tag on screen 1
+    -- Set spotify to always map on the main tag on the left screen
     {
         rule = { class = "Spotify" },
         properties = { screen = 2, tag = "music" }
     },
 
-    -- Set whatsie to always map on the main tag on screen 1
+    -- Set whatsie to always map on the main tag on the left screen
     {
         rule = { class = "Rambox" },
         properties = { screen = 2, tag = "music" }
     },
 
-    -- Set slack to always map on the chat tag on screen 3
+    -- Set slack to always map on the chat tag on the right screen
     {
         rule = { class = "Slack" },
         properties = { screen = 1, tag = "chat" }
     },
 
-    -- Set discord to always map on the web tag on screen 3
+    -- Set discord to always map on the web tag on the right screen
     {
         rule = { class = "discord" },
         properties = { screen = 1, tag = "web" }
     },
 
-    -- Set chrome to always map on the web tag on screen 3
+    -- Set solar to always map on the main tag on the middle screen
+    {
+        rule = { class = "Solaar" },
+        properties = { screen = 3, tag = "main" }
+    },
+
+    -- Set chrome to always map on the web tag on the right screen
     {
         rule = { class = "Google-chrome" },
         properties = { screeen = 1, tag = "web" }
