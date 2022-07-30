@@ -1,4 +1,3 @@
-# Dotfile configurations
 All my configuration files I wish to make portable.
 
 ## Current Branches
@@ -8,7 +7,10 @@ New ones will be added each time I start using a new OS.
 
 
 ### Important Branches
+```
 main = ubuntu
+```
+
 
 ## Installation
 Installation processes
