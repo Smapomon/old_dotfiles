@@ -151,3 +151,7 @@ function install_with_bundle() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Custom appends through shell
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
