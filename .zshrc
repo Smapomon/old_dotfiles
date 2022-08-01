@@ -17,6 +17,7 @@ source $ZSH/oh-my-zsh.sh
 # BASIC SHELL STUFF
 alias ls="exa --long --header --icons --color=always --group-directories-first"
 alias files="clear;ls -alh"
+alias s="kitty +kitten ssh"
 
 # GIT ALIASES
 alias co='checkout'
@@ -29,7 +30,9 @@ alias dev='cd ~/dev; clear; ls -alh'
 alias omni="cd ~/dev/gitlab/omnitool-be; clear; ls -alh"
 alias sptla="cd ~/dev/work/spotilla-be; clear; ls -alh"
 alias get_perm="cd ~/dev/work/perms; clear; ls -alh"
-alias vimconf="cd ~/.config/nvim; clear; files"
+alias vimconf="cd ~/.config/nvim; clear; files; nvim init.vim"
+alias wmconf="cd ~/.config/awesome; clear; files"
+alias kittyconf="cd ~/.config/kitty; clear; files; nvim kitty.conf"
 
 # SPTLA FUNCTIONS
 alias specmigrate="docker compose run be rake db:migrate RAILS_ENV=test"

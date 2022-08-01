@@ -5,5 +5,6 @@ echo "monitor 2 set..."
 xrandr --output HDMI-0 --mode 1920x1080 --rate 119.98
 echo "monitor 3 set..."
 
-nitrogen --restore
-echo "restored wallpapers..."
+# not using nitrogen for now
+#nitrogen --restore
+#echo "restored wallpapers..."

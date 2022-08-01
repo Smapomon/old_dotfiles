@@ -293,17 +293,21 @@ function theme.at_screen_connect(s)
             selected           = true
         })
 
+        awful.tag.add("SPTLA", {
+            icon               = "/home/smapo/.config/awesome/icons/spotilla-logo.png",
+            layout             = awful.layout.layouts[1],
+            screen             = s,
+        })
+
     -- RIGHT MONITOR
     elseif(s.index == 1)
     then
-        awful.tag.add("chat", {
-            icon     = "/home/smapo/.config/awesome/icons/chat.png",
+        awful.tag.add("work", {
             layout   = awful.layout.layouts[1],
             screen   = s
         })
 
         awful.tag.add("web", {
-            icon   = "/home/smapo/.config/awesome/icons/web.png",
             layout = awful.layout.layouts[1],
             screen = s,
             selected = true
@@ -312,13 +316,6 @@ function theme.at_screen_connect(s)
     else
         awful.tag(custom_tags, s, awful.layout.layouts[1])
     end
-
-    -- Add misc tag to all the screens
-    awful.tag.add("misc", {
-        icon   = "/home/smapo/.config/awesome/icons/misc.svg",
-        layout = awful.layout.layouts[1],
-        screen = s
-    })
 
 
     -- Create a promptbox for each screen
@@ -369,7 +366,6 @@ function theme.at_screen_connect(s)
                 {
                     {
                         {
-                            id     = 'icon_role',
                             widget = wibox.widget.imagebox,
                         },
                         margins = 2,
@@ -385,8 +381,8 @@ function theme.at_screen_connect(s)
                 right = 10,
                 widget = wibox.container.margin
             },
-            id     = 'background_role',
-            widget = wibox.container.background,
+            id           = 'background_role',
+            widget       = wibox.container.background,
         },
     }
 

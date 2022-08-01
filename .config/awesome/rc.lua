@@ -26,6 +26,10 @@ local mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 -- }}}
 
+--{{{ Naughty Defaults
+naughty.config.defaults['icon_size'] = 100
+--}}}
+
 -- {{{ Error handling
 
 -- Check if awesome encountered an error during startup and fell back to
@@ -292,13 +296,6 @@ globalkeys = mytable.join(
     awful.key({ modkey,           }, "Tab", awful.tag.viewnext,
         {description = "view next", group = "tag"}),
 
-
-    -- Non-empty tag browsing
-    awful.key({ altkey }, "Left", function () awful.client.focus.byidx(-1) end,
-              {description = "focus previous by index", group = "client"}),
-    awful.key({ altkey }, "Right", function () awful.client.focus.byidx(1) end,
-              {description = "focus next by index", group = "client"}),
-
     -- Default client focus
     awful.key({ modkey,           }, "j",
         function ()
@@ -318,6 +315,18 @@ globalkeys = mytable.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
+    awful.key({ altkey,           }, "Right",
+        function ()
+            awful.client.focus.byidx(1)
+        end,
+        {description = "focus next by index", group = "client"}
+    ),
+    awful.key({ altkey,           }, "Left",
+        function ()
+            awful.client.focus.byidx(-1)
+        end,
+        {description = "focus previous by index", group = "client"}
+    ),
 
 
     -- Menu
@@ -329,10 +338,33 @@ globalkeys = mytable.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+
+    awful.key({ modkey, "Control" }, "j", function ()
+                    awful.screen.focus_relative( 1)
+                    naughty.destroy_all_notifications()
+                    naughty.notify {
+                        title    = "Active Screen",
+                        text     = "This screen is currently active!",
+                        position = "top_middle",
+                        height   = 300,
+                        width    = 500
+                    }
+                end,
               {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+
+    awful.key({ modkey, "Control" }, "k", function ()
+                    awful.screen.focus_relative(-1)
+                    naughty.destroy_all_notifications()
+                    naughty.notify {
+                        title    = "Active Screen",
+                        text     = "This screen is currently active!",
+                        position = "top_middle",
+                        height   = 300,
+                        width    = 500
+                    }
+                end,
               {description = "focus the previous screen", group = "screen"}),
+
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
 
@@ -768,16 +800,16 @@ awful.rules.rules = {
         properties = { screen = 2, tag = "music" }
     },
 
-    -- Set whatsie to always map on the main tag on the left screen
+    -- Set rambox to always map on the music tag on the left screen
     {
-        rule = { class = "Rambox" },
+        rule = { class = "rambox" },
         properties = { screen = 2, tag = "music" }
     },
 
-    -- Set slack to always map on the chat tag on the right screen
+    -- Set slack to always map on the work tag on the right screen
     {
         rule = { class = "Slack" },
-        properties = { screen = 1, tag = "chat" }
+        properties = { screen = 1, tag = "work" }
     },
 
     -- Set discord to always map on the web tag on the right screen
@@ -790,14 +822,7 @@ awful.rules.rules = {
     {
         rule = { class = "Solaar" },
         properties = { screen = 3, tag = "main" }
-    },
-
-    -- Set chrome to always map on the web tag on the right screen
-    {
-        rule = { class = "Google-chrome" },
-        properties = { screeen = 1, tag = "web" }
     }
-
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
