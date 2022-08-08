@@ -30,7 +30,7 @@ alias dev='cd ~/dev; clear; ls -alh'
 alias omni="cd ~/dev/gitlab/omnitool-be; clear; ls -alh"
 alias sptla="cd ~/dev/work/spotilla-be; clear; ls -alh"
 alias get_perm="cd ~/dev/work/perms; clear; ls -alh"
-alias vimconf="cd ~/.config/nvim; clear; files; nvim init.vim"
+alias vimconf="cd ~/.config/nvim; clear; files; nvim init.lua"
 alias wmconf="cd ~/.config/awesome; clear; files"
 alias kittyconf="cd ~/.config/kitty; clear; files; nvim kitty.conf"
 
@@ -41,7 +41,7 @@ alias dspec_all="docker compose run be rspec ./spec"
 alias jarru="clear; docker compose run be brakeman -A -z -I"
 
 # RAILS FUNCTIONS
-alias dcup="clear; rm tmp/pids/server.pid; docker compose up"
+alias dcup="clear; sudo rm tmp/pids/server.pid; docker compose up"
 alias dbld="docker compose build"
 
 alias rcon="open_console"

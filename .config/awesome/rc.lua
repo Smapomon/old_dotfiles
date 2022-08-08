@@ -427,9 +427,9 @@ globalkeys = mytable.join(
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey, "Control" }, "Left",     function () awful.tag.incmwfact(-0.05) end,
               {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Control" }, "Up",     function () awful.tag.incnmaster( 1, nil, true) end,
+    awful.key({ modkey, "Control" }, "Up",     function () awful.client.incwfact(-0.05) end,
               {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "Down",     function () awful.tag.incnmaster(-1, nil, true) end,
+    awful.key({ modkey, "Control" }, "Down",     function () awful.client.incwfact(0.05) end,
               {description = "decrease the number of master clients", group = "layout"}),
 
 
@@ -793,6 +793,18 @@ awful.rules.rules = {
         properties = { sticky = false }
     },
 
+    -- Don't float on launch
+    {
+        rule_any = {
+
+            class = {
+                "Google-chrome",
+                "Spotify"
+            }
+        },
+        properties = { floating = false }
+    },
+
 
     -- Set spotify to always map on the main tag on the left screen
     {
@@ -816,17 +828,7 @@ awful.rules.rules = {
     {
         rule = { class = "discord" },
         properties = { screen = 1, tag = "web" }
-    },
-
-    -- Set solar to always map on the main tag on the middle screen
-    {
-        rule = { class = "Solaar" },
-        properties = { screen = 3, tag = "main" }
     }
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 }
 
 -- }}}

@@ -312,7 +312,6 @@ function theme.at_screen_connect(s)
             screen = s,
             selected = true
         })
-
     else
         awful.tag(custom_tags, s, awful.layout.layouts[1])
     end
@@ -357,7 +356,7 @@ function theme.at_screen_connect(s)
                 halign = 'center',
                 widget = wibox.container.place,
             },
-            layout  = wibox.layout.flex.horizontal
+            layout  = wibox.layout.fixed.horizontal
         },
         -- Notice that there is *NO* wibox.wibox prefix, it is a template,
         -- not a widget instance.
@@ -377,9 +376,10 @@ function theme.at_screen_connect(s)
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-                left  = 10,
-                right = 10,
-                widget = wibox.container.margin
+                left   = 10,
+                right  = 10,
+                width  = 300,
+                widget = wibox.container.constraint
             },
             id           = 'background_role',
             widget       = wibox.container.background,
