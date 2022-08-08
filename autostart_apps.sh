@@ -1,7 +1,8 @@
 nohup rambox &
 nohup slack &
 nohup discord &
-nohup solaar
+nohup solaar &
+nohup diodon
 echo "Apps started..."
 
 echo "Checking spotify state..."

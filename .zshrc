@@ -18,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls="exa --long --header --icons --color=always --group-directories-first"
 alias files="clear;ls -alh"
 alias s="kitty +kitten ssh"
+alias icat="kitty +kitten icat"
 
 # GIT ALIASES
 alias co='checkout'

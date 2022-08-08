@@ -546,7 +546,10 @@ globalkeys = mytable.join(
     awful.key({ modkey }, "c", function () awful.spawn.with_shell("xsel | xsel -i -b") end,
               {description = "copy terminal to gtk", group = "hotkeys"}),
     -- Copy clipboard to primary (gtk to terminals)
-    awful.key({ modkey }, "v", function () awful.spawn.with_shell("xsel -b | xsel") end,
+    --awful.key({ modkey }, "v", function () awful.spawn.with_shell("xsel -b | xsel") end,
+              --{description = "copy gtk to terminal", group = "hotkeys"}),
+    -- Open diodon for clipboard histroy
+    awful.key({ modkey }, "v", function () awful.spawn.with_shell("/usr/bin/diodon") end,
               {description = "copy gtk to terminal", group = "hotkeys"}),
 
     -- User programs
