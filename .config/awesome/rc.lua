@@ -642,7 +642,37 @@ clientkeys = mytable.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+    awful.key({ altkey, "Shift"   }, "Tab",
+	function()
+	  if cl_menu then
+	    cl_menu:hide()
+	    cl_menu=nil
+	  else
+	    client_list={}
+	    local tag = awful.tag.selected()
+	    for i=1, #tag:clients() do
+	      cl=tag:clients()[i]
+	      if tag:clients()[i].minimized then
+		prefix = "_ "
+	      else
+		prefix = "* "
+	      end
+	      if not awful.rules.match(cl, {class= "Conky"}) then
+		client_list[i]=
+		{prefix .. cl.name,
+		  function()
+		    tag:clients()[i].minimized=not tag:clients()[i].minimized
+		  end,
+		  cl.icon
+		}
+	      end
+	    end
+	    cl_menu=awful.menu({items = client_list, theme = {width=300}})
+	    cl_menu:show()
+	  end
+	end,
+	{description = "cycle minimized clients"})
 )
 
 -- Bind all key numbers to tags.

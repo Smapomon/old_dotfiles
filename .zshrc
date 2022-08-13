@@ -19,6 +19,7 @@ alias ls="exa --long --header --icons --color=always --group-directories-first"
 alias files="clear;ls -alh"
 alias s="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
+alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 
 # GIT ALIASES
 alias co='checkout'
@@ -42,7 +43,7 @@ alias dspec_all="docker compose run be rspec ./spec"
 alias jarru="clear; docker compose run be brakeman -A -z -I"
 
 # RAILS FUNCTIONS
-alias dcup="clear; sudo rm tmp/pids/server.pid; docker compose up"
+alias dcup="clear; rm tmp/pids/server.pid; docker compose up"
 alias dbld="docker compose build"
 
 alias rcon="open_console"
