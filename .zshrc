@@ -35,6 +35,7 @@ alias get_perm="cd ~/dev/work/perms; clear; ls -alh"
 alias vimconf="cd ~/.config/nvim; clear; files; nvim init.lua"
 alias wmconf="cd ~/.config/awesome; clear; files"
 alias kittyconf="cd ~/.config/kitty; clear; files; nvim kitty.conf"
+alias start_vpn="cd /usr/local/bin; clear; sudo sh goodaccess.sh -r smapo-linukka"
 
 # SPTLA FUNCTIONS
 alias specmigrate="docker compose run be rake db:migrate RAILS_ENV=test"
