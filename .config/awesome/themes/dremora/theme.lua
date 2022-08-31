@@ -80,12 +80,18 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
+
+-- MONITOR ORDER (number is index)
+local monitor_left   = 3
+local monitor_center = 2
+local monitor_right  = 1
+
 theme.wallpaper = function(s)
     -- get wp based on screen index
     local wallpapers = {
         "/home/smapo/Pictures/byron-last-wave-dark.jpg",
+        "/home/smapo/Pictures/Duckful.PNG",
         "/home/smapo/Pictures/reckful-everland.jpg",
-        "/home/smapo/Pictures/Duckful.PNG"
     }
 
     return wallpapers[s.index]
@@ -274,7 +280,7 @@ function theme.at_screen_connect(s)
     local custom_tags    = { "ƀ", "Ƅ", "Ɗ", "ƈ", "ƙ" }
 
     -- LEFT MONITOR
-    if(s.index == 2)
+    if(s.index == monitor_left)
     then
         awful.tag.add("music", {
             icon               = "/home/smapo/.config/awesome/icons/music.png",
@@ -284,7 +290,7 @@ function theme.at_screen_connect(s)
         })
 
     -- CENTER MONITOR
-    elseif(s.index == 3)
+    elseif(s.index == monitor_center)
     then
         awful.tag.add("main", {
             icon               = "/home/smapo/.config/awesome/icons/terminal.png",
@@ -300,7 +306,7 @@ function theme.at_screen_connect(s)
         })
 
     -- RIGHT MONITOR
-    elseif(s.index == 1)
+    elseif(s.index == monitor_right)
     then
         awful.tag.add("work", {
             layout   = awful.layout.layouts[1],
@@ -418,7 +424,7 @@ function theme.at_screen_connect(s)
     }
 
         -- Force widgets to main monitor
-    if(s.index == 3)
+    if(s.index == monitor_center)
     then
         local tray = wibox.widget.systray()
         tray:set_screen(s)

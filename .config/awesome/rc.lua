@@ -5,6 +5,11 @@
 
 --]]
 
+-- MONITOR ORDER (number is index)
+local monitor_left   = 3
+local monitor_center = 2
+local monitor_right  = 1
+
 -- {{{ Required libraries
 
 -- If LuaRocks is installed, make sure that packages installed through it are
@@ -608,13 +613,13 @@ clientkeys = mytable.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Control"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey, "Control"   }, "c",      function (c) c:kill()                       end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen(c.screen.index-1)             end,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
@@ -842,25 +847,25 @@ awful.rules.rules = {
     -- Set spotify to always map on the main tag on the left screen
     {
         rule = { class = "Spotify" },
-        properties = { screen = 2, tag = "music" }
+        properties = { screen = monitor_left, tag = "music" }
     },
 
     -- Set rambox to always map on the music tag on the left screen
     {
         rule = { class = "rambox" },
-        properties = { screen = 2, tag = "music" }
+        properties = { screen = monitor_left, tag = "music" }
     },
 
     -- Set slack to always map on the work tag on the right screen
     {
         rule = { class = "Slack" },
-        properties = { screen = 1, tag = "work" }
+        properties = { screen = monitor_right, tag = "work" }
     },
 
     -- Set discord to always map on the web tag on the right screen
     {
         rule = { class = "discord" },
-        properties = { screen = 1, tag = "web" }
+        properties = { screen = monitor_right, tag = "web" }
     }
 }
 

@@ -89,7 +89,7 @@ function rails_env_append() {
 
 function open_console() {
 	docker_instance_name=$(rails_dir_map)
-	ex_command="docker compose run $docker_instance_name rails c"
+	ex_command="clear; docker compose run $docker_instance_name rails c"
 	eval $ex_command;
 }
 
@@ -100,7 +100,7 @@ function genmodel_without_migration() {
 	eval $ex_command;
 }
 
-function genmodle_with_migration() {
+function genmodel_with_migration() {
 	modelname=$1
 	docker_instance_name=$(rails_dir_map)
 	ex_command="docker compose run $docker_instance_name rails g model $modelname --no-test-framework"
