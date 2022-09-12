@@ -28,7 +28,7 @@ theme.bg_focus                                  = theme.fg_focus
 theme.bg_urgent                                 = "#3F3F3F"
 theme.taglist_fg_focus                          = "#282a36"
 theme.tasklist_bg_focus                         = "#000000"
-theme.tasklist_fg_focus                         = "#A77AC4"
+theme.tasklist_fg_focus                         = "#1fb1b1"
 theme.border_width                              = 1
 theme.border_normal                             = "#282a36"
 theme.border_focus                              = "#F07178"
@@ -82,15 +82,15 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 
 
 -- MONITOR ORDER (number is index)
-local monitor_left   = 3
-local monitor_center = 2
-local monitor_right  = 1
+local monitor_left   = 2
+local monitor_center = 1
+local monitor_right  = 3
 
 theme.wallpaper = function(s)
     -- get wp based on screen index
     local wallpapers = {
-        "/home/smapo/Pictures/byron-last-wave-dark.jpg",
         "/home/smapo/Pictures/Duckful.PNG",
+        "/home/smapo/Pictures/byron-last-wave-dark.jpg",
         "/home/smapo/Pictures/reckful-everland.jpg",
     }
 

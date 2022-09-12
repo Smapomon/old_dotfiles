@@ -5,10 +5,13 @@
 
 --]]
 
+-- SYSTEM VARIABLES
 -- MONITOR ORDER (number is index)
-local monitor_left   = 3
-local monitor_center = 2
-local monitor_right  = 1
+local monitor_left   = 2
+local monitor_center = 1
+local monitor_right  = 3
+
+local user_home = 'smapo'
 
 -- {{{ Required libraries
 
@@ -422,10 +425,10 @@ globalkeys = mytable.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
+    --awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+              --{description = "select next", group = "layout"}),
+    --awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+              --{description = "select previous", group = "layout"}),
 
     -- Add resize commands with arrows
     awful.key({ modkey, "Control" }, "Right",     function () awful.tag.incmwfact( 0.05) end,
@@ -564,13 +567,11 @@ globalkeys = mytable.join(
     -- Default
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
-    --[[ dmenu
-    awful.key({ modkey }, "x", function ()
-            os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
-            beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-        end,
-        {description = "show dmenu", group = "launcher"}),
-    --]]
+    -- dmenu
+    --awful.key({ modkey }, "space", function ()
+            --awful.spawn("fuzzy_win")
+        --end,
+        --{description = "show dmenu", group = "launcher"}),
     -- alternatively use rofi, a dmenu-like application with more features
     -- check https://github.com/DaveDavenport/rofi for more details
     --[[ rofi
@@ -584,10 +585,10 @@ globalkeys = mytable.join(
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey }, "x",
+    awful.key({ modkey }, "space",
               function ()
                   awful.prompt.run {
-                    prompt       = "Run Lua code: ",
+                    prompt       = "Find window: ",
                     textbox      = awful.screen.focused().mypromptbox.widget,
                     exe_callback = awful.util.eval,
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
@@ -856,16 +857,16 @@ awful.rules.rules = {
         properties = { screen = monitor_left, tag = "music" }
     },
 
-    -- Set slack to always map on the work tag on the right screen
+    -- Set slack to always map on the web & work tag on the right screen
     {
         rule = { class = "Slack" },
-        properties = { screen = monitor_right, tag = "work" }
+        properties = { screen = monitor_right, tags = {"work", "web"} }
     },
 
-    -- Set discord to always map on the web tag on the right screen
+    -- Set discord to always map on the web & work tag on the right screen
     {
         rule = { class = "discord" },
-        properties = { screen = monitor_right, tag = "web" }
+        properties = { screen = monitor_right, tags = {"work", "web"} }
     }
 }
 
@@ -954,14 +955,15 @@ end)
 
 -- Autostart Applications
 update_volume(volume_widget)
-awful.spawn.with_shell("/home/smapo/set_mouse.sh")
-awful.spawn.with_shell("/home/smapo/set_caps_escape.sh")
+
+awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/set_mouse.sh")
+awful.spawn.with_shell("/home/".. user_home .."/shell_scripts/set_caps_escape.sh")
 awful.spawn.with_shell("compton")
-awful.spawn.with_shell("/home/smapo/set_monitor.sh")
+awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/set_monitor.sh")
 awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("/home/smapo/autostart_apps.sh")
+awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/autostart_apps.sh")
 
 -- Set autolock for display
-awful.spawn.with_shell("xautolock -time 15 -locker /home/smapo/set_lockscreen.sh")
+awful.spawn.with_shell("xautolock -time 15 -locker /home/".. user_home .."/shell_scripts/set_lockscreen.sh")
 
 -- }}}

@@ -37,6 +37,9 @@ alias wmconf="cd ~/.config/awesome; clear; files"
 alias kittyconf="cd ~/.config/kitty; clear; files; nvim kitty.conf"
 alias start_vpn="cd /usr/local/bin; clear; sudo sh goodaccess.sh -r smapo-linukka"
 
+# NAVIGATE WINDOW CLIENTS
+alias fuzzy_win='wmctrl -i -a $(wmctrl -l | fzf | cut -d\  -f1); exit'
+
 # SPTLA FUNCTIONS
 alias specmigrate="docker compose run be rake db:migrate RAILS_ENV=test"
 alias dspec="docker compose run be rspec ./spec/$1"
