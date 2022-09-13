@@ -194,7 +194,7 @@ local myawesomemenu = {
    { "Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "Manual", string.format("%s -e man awesome", terminal) },
    { "Edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-   { "Lock", function() awful.spawn.with_shell("/home/smapo/set_lockscreen.sh") end },
+   { "Lock", function() awful.spawn.with_shell("/home/".. user_home .."/shell_scripts/set_lockscreen.sh") end },
    { "Restart", awesome.restart },
    { "Quit", function() awesome.quit() end },
 }
@@ -287,7 +287,16 @@ globalkeys = mytable.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ modkey }, "l", function () awful.util.spawn("/home/smapo/set_lockscreen.sh") end,
+    awful.key({ modkey }, "l",
+      function ()
+        naughty.notify {
+          title    = "Lock Script",
+          text     = "Locking screen...",
+          position = "top_middle"
+        }
+
+        awful.util.spawn("/home/".. user_home .."/shell_scripts/set_lockscreen.sh")
+      end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Show help
