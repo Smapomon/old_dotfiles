@@ -23,7 +23,7 @@ alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /d
 
 # GIT ALIASES
 alias co='checkout'
-alias c_branch="git branch --show-current | xclip -selection clipboard"
+alias c_branch="git branch --show-current | tr -d '\n' | xclip -selection clipboard"
 alias dot_git='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 
 
