@@ -6,9 +6,9 @@
 --]]
 
 -- MONITOR ORDER (number is index)
-local monitor_left   = 3
+local monitor_left   = 1
 local monitor_center = 2
-local monitor_right  = 1
+local monitor_right  = 3
 
 -- {{{ Required libraries
 
