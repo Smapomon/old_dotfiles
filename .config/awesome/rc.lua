@@ -574,36 +574,36 @@ globalkeys = mytable.join(
               {description = "run browser", group = "launcher"}),
 
     -- Default
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+    --awful.key({ modkey }, "p", function() menubar.show() end,
+              --{description = "show the menubar", group = "launcher"}),
     -- dmenu
     --awful.key({ modkey }, "space", function ()
-            --awful.spawn("fuzzy_win")
+            --awful.util.spawn_with_shell("~/shell_scripts/fuzzy_win")
         --end,
         --{description = "show dmenu", group = "launcher"}),
     -- alternatively use rofi, a dmenu-like application with more features
     -- check https://github.com/DaveDavenport/rofi for more details
-    --[[ rofi
-    awful.key({ modkey }, "x", function ()
-            os.execute(string.format("rofi -show %s -theme %s",
-            'run', 'dmenu'))
+    -- rofi
+    awful.key({ modkey }, "p", function ()
+            awful.screen.focus(monitor_center)
+            os.execute(string.format("rofi -show %s",
+            'combi'))
         end,
         {description = "show rofi", group = "launcher"}),
-    --]]
     -- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey }, "space",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Find window: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
+    --awful.key({ modkey }, "space",
+              --function ()
+                  --awful.prompt.run {
+                    --prompt       = "Find window: ",
+                    --textbox      = awful.screen.focused().mypromptbox.widget,
+                    --exe_callback = awful.util.eval,
+                    --history_path = awful.util.get_cache_dir() .. "/history_eval"
+                  --}
+              --end,
+              --{description = "lua execute prompt", group = "awesome"}),
     --]]
 
     -- Screenshot snip
@@ -895,6 +895,9 @@ client.connect_signal("manage", function (c)
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
+
+    -- Set rounded corners
+    c.shape = gears.shape.rounded_rect
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
