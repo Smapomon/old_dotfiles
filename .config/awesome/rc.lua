@@ -790,7 +790,8 @@ awful.rules.rules = {
             "teams",
             "rambox",
             "Gnome-calculator",
-            "Solaar"
+            "Solaar",
+            "1password"
         },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -857,13 +858,13 @@ awful.rules.rules = {
     -- Set slack to always map on the work tag on the right screen
     {
         rule = { class = "Slack" },
-        properties = { screen = monitor_right, tag = "work" }
+        properties = { screen = monitor_right, tags = {"web", "work"} }
     },
 
     -- Set discord to always map on the web tag on the right screen
     {
         rule = { class = "discord" },
-        properties = { screen = monitor_right, tag = "web" }
+        properties = { screen = monitor_right, tags = {"web", "work"} }
     }
 }
 
