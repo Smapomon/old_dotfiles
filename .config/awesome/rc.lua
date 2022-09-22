@@ -6,8 +6,8 @@
 --]]
 
 -- MONITOR ORDER (number is index)
-local monitor_left   = 1
-local monitor_center = 2
+local monitor_left   = 2
+local monitor_center = 1
 local monitor_right  = 3
 
 -- {{{ Required libraries
@@ -562,8 +562,8 @@ globalkeys = mytable.join(
               {description = "run browser", group = "launcher"}),
 
     -- Default
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+    --awful.key({ modkey }, "p", function() menubar.show() end,
+              --{description = "show the menubar", group = "launcher"}),
     --[[ dmenu
     awful.key({ modkey }, "x", function ()
             os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
@@ -573,13 +573,11 @@ globalkeys = mytable.join(
     --]]
     -- alternatively use rofi, a dmenu-like application with more features
     -- check https://github.com/DaveDavenport/rofi for more details
-    --[[ rofi
-    awful.key({ modkey }, "x", function ()
-            os.execute(string.format("rofi -show %s -theme %s",
-            'run', 'dmenu'))
+    awful.key({ modkey }, "p", function ()
+            awful.screen.focus(monitor_center)
+            os.execute(string.format("rofi -show %s", 'combi'))
         end,
         {description = "show rofi", group = "launcher"}),
-    --]]
     -- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
@@ -847,7 +845,7 @@ awful.rules.rules = {
     -- Set spotify to always map on the main tag on the left screen
     {
         rule = { class = "Spotify" },
-        properties = { screen = monitor_left, tag = "music" }
+        properties = { screen = monitor_left, tag = "music", floating = false, maximized = true }
     },
 
     -- Set rambox to always map on the music tag on the left screen
@@ -885,6 +883,8 @@ client.connect_signal("manage", function (c)
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
+
+    c.shape = gears.shape.rounded_rect
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
