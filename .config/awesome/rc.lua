@@ -289,6 +289,7 @@ globalkeys = mytable.join(
     -- X screen locker
     awful.key({ modkey }, "l",
       function ()
+        awful.screen.focus(monitor_center)
         naughty.notify {
           title    = "Lock Script",
           text     = "Locking screen...",

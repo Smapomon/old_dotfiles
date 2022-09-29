@@ -33,7 +33,7 @@ alias omni="cd ~/dev/gitlab/omnitool-be; clear; ls -alh"
 alias sptla="cd ~/dev/work/spotilla-be; clear; ls -alh"
 alias get_perm="cd ~/dev/work/perms; clear; ls -alh"
 alias vimconf="cd ~/.config/nvim; clear; files; nvim init.lua"
-alias wmconf="cd ~/.config/awesome; clear; files"
+alias wmconf="cd ~/.config/awesome; clear; files; nvim rc.lua"
 alias kittyconf="cd ~/.config/kitty; clear; files; nvim kitty.conf"
 alias start_vpn="cd /usr/local/bin; clear; sudo sh goodaccess.sh -r smapo-linukka"
 
