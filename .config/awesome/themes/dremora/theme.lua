@@ -90,8 +90,8 @@ theme.wallpaper = function(s)
     -- get wp based on screen index
     local wallpapers = {
         "/home/smapo/Pictures/Duckful.PNG",
-        "/home/smapo/Pictures/byron-last-wave-dark.jpg",
         "/home/smapo/Pictures/reckful-everland.jpg",
+        "/home/smapo/Pictures/byron-last-wave-dark.jpg",
     }
 
     return wallpapers[s.index]
@@ -282,7 +282,7 @@ function theme.at_screen_connect(s)
     -- LEFT MONITOR
     if(s.index == monitor_left)
     then
-        awful.tag.add("music", {
+        awful.tag.add("MUSIC", {
             icon               = "/home/smapo/.config/awesome/icons/music.png",
             layout             = awful.layout.layouts[1],
             screen             = s,
@@ -292,31 +292,33 @@ function theme.at_screen_connect(s)
     -- CENTER MONITOR
     elseif(s.index == monitor_center)
     then
-        awful.tag.add("main", {
-            icon               = "/home/smapo/.config/awesome/icons/terminal.png",
-            layout             = awful.layout.layouts[1],
-            screen             = s,
-            selected           = true
+        awful.tag.add("MAIN", {
+            icon     = "/home/smapo/.config/awesome/icons/home-icon.png",
+            layout   = awful.layout.layouts[1],
+            screen   = s,
+            selected = true
         })
 
-        awful.tag.add("SPTLA", {
-            icon               = "/home/smapo/.config/awesome/icons/spotilla-logo.png",
-            layout             = awful.layout.layouts[1],
-            screen             = s,
+        awful.tag.add("CODE", {
+            icon   = "/home/smapo/.config/awesome/icons/terminal.png",
+            layout = awful.layout.layouts[1],
+            screen = s,
         })
 
     -- RIGHT MONITOR
     elseif(s.index == monitor_right)
     then
-        awful.tag.add("work", {
-            layout   = awful.layout.layouts[1],
-            screen   = s
-        })
-
-        awful.tag.add("web", {
+        awful.tag.add("WEB", {
+            icon   = "/home/smapo/.config/awesome/icons/web-icon.png",
             layout = awful.layout.layouts[1],
             screen = s,
             selected = true
+        })
+
+        awful.tag.add("WORK", {
+            icon   = "/home/smapo/.config/awesome/icons/spotilla-logo.png",
+            layout = awful.layout.layouts[1],
+            screen = s
         })
     else
         awful.tag(custom_tags, s, awful.layout.layouts[1])

@@ -827,6 +827,11 @@ awful.rules.rules = {
         properties = { maximized = false }
     },
 
+    {
+        rule       = { class     = "Spotify" },
+        properties = { maximized = true }
+    },
+
     -- Never sticky windows on launch
     {
         rule_any = {
@@ -857,25 +862,25 @@ awful.rules.rules = {
     -- Set spotify to always map on the main tag on the left screen
     {
         rule = { class = "Spotify" },
-        properties = { screen = monitor_left, tag = "music" }
+        properties = { screen = monitor_left, tag = "MUSIC" }
     },
 
     -- Set rambox to always map on the music tag on the left screen
     {
         rule = { class = "rambox" },
-        properties = { screen = monitor_left, tag = "music" }
+        properties = { screen = monitor_left, tag = "MUSIC" }
     },
 
     -- Set slack to always map on the web & work tag on the right screen
     {
         rule = { class = "Slack" },
-        properties = { screen = monitor_right, tags = {"work", "web"} }
+        properties = { screen = monitor_right, tags = {"WORK", "WEB"} }
     },
 
     -- Set discord to always map on the web & work tag on the right screen
     {
         rule = { class = "discord" },
-        properties = { screen = monitor_right, tags = {"work", "web"} }
+        properties = { screen = monitor_right, tags = {"WORK", "WEB"} }
     }
 }
 
