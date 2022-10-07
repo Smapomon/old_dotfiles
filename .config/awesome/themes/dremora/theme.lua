@@ -87,14 +87,14 @@ local monitor_center = 1
 local monitor_right  = 3
 
 theme.wallpaper = function(s)
-    -- get wp based on screen index
-    local wallpapers = {
-        "/home/smapo/Pictures/Duckful.PNG",
-        "/home/smapo/Pictures/reckful-everland.jpg",
-        "/home/smapo/Pictures/byron-last-wave-dark.jpg",
-    }
+  -- get wp based on screen index
+  local wallpapers = {
+    "/home/smapo/Pictures/Duckful.PNG",
+    "/home/smapo/Pictures/reckful-everland.jpg",
+    "/home/smapo/Pictures/byron-last-wave-dark.jpg",
+  }
 
-    return wallpapers[s.index]
+  return wallpapers[s.index]
 end
 
 
@@ -193,6 +193,12 @@ local bat = lain.widget.bat({
         widget:set_markup(markup.font(theme.font, markup(gray, bat_header) .. markup(white, bat_p)))
     end
 })
+
+-- Last active app
+active_app = wibox.widget.textbox()
+function update_active_app(widget, current_app)
+  widget:set_markup(markup.font(theme.font, markup(gray, current_app) .. markup(gray, ' | ')))
+end
 
 -- ALSA volume
 --local volume_widget = wibox.container.background(volume.bar)
@@ -414,6 +420,7 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            active_app,
             wibox.widget.systray(),
             first,
             --theme.mpd.widget,

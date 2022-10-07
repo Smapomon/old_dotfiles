@@ -803,7 +803,8 @@ awful.rules.rules = {
             "teams",
             "rambox",
             "Gnome-calculator",
-            "Solaar"
+            "Solaar",
+            "1Password"
         },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -958,6 +959,8 @@ client.connect_signal("focus", function(c)
         --title = "Window Props",
         --text = c.class
     --}
+
+    update_active_app(active_app, c.class)
 
     c.border_color = beautiful.border_focus
 end)
