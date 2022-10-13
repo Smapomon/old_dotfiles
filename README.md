@@ -43,3 +43,7 @@ dot_git config status.showUntrackedFiles no
 
 Finally add your new empty repo in github/gitlab to the bare repo remote.
 Instructions for this can be seen when creating a new empty repo in github for example.
+
+
+## TODO
+- add shell script for installing dependencies
