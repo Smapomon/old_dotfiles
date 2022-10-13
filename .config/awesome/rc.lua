@@ -985,6 +985,6 @@ awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/autostart_apps.sh")
 
 -- Set autolock for display
-awful.spawn.with_shell("xautolock -time 15 -locker /home/".. user_home .."/shell_scripts/set_lockscreen.sh")
+awful.spawn.with_shell("xautolock -time 45 -locker /home/".. user_home .."/shell_scripts/set_lockscreen.sh")
 
 -- }}}

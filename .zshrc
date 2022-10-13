@@ -164,3 +164,6 @@ function install_with_bundle() {
 # Custom appends through shell
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PATH="$HOME/dev/android_studio/android-studio-2021.3.1.16-linux/android-studio/bin:$PATH"
+export PATH="/usr/java/jre1.8.0_341/bin:$PATH"
