@@ -804,7 +804,8 @@ awful.rules.rules = {
             "rambox",
             "Gnome-calculator",
             "Solaar",
-            "1Password"
+            "1Password",
+            "Nvidia-settings"
         },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client

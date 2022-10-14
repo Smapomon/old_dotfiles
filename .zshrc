@@ -51,9 +51,9 @@ alias dcup="clear; rm tmp/pids/server.pid; docker compose up"
 alias dbld="docker compose build"
 
 alias rcon="open_console"
-alias genmodel_no_migrate="genmodel_without_migration $1"
-alias genmodel="genmodel_with_migration $1"
-alias genmigration="genmigrationonly $1"
+alias genmodel_no_migrate="genmodel_without_migration_function $1"
+alias genmodel="genmodel_with_migration_function $1"
+alias genmigration="genmigrationonly_function $1"
 alias droutes="rails_routes"
 alias dcmigraationes="run_migrations"
 alias dcmigrationstatus="run_migration_status"
@@ -96,21 +96,21 @@ function open_console() {
 	eval $ex_command;
 }
 
-function genmodel_without_migration() {
+function genmodel_without_migration_function() {
 	modelname=$1
 	docker_instance_name=$(rails_dir_map)
 	ex_command="docker compose run $docker_instance_name rails g model $modelname --skip-migration --no-test-framework"
 	eval $ex_command;
 }
 
-function genmodel_with_migration() {
+function genmodel_with_migration_function() {
 	modelname=$1
 	docker_instance_name=$(rails_dir_map)
 	ex_command="docker compose run $docker_instance_name rails g model $modelname --no-test-framework"
 	eval $ex_command;
 }
 
-function genmigrationonly() {
+function genmigrationonly_function() {
 	migrationname=$1
 	docker_instance_name=$(rails_dir_map)
 	ex_command="docker compose run $docker_instance_name rails g migration $migrationname"
