@@ -862,28 +862,25 @@ awful.rules.rules = {
     },
 
 
-    -- Set spotify to always map on the main tag on the left screen
+    -- Set apps to always map on the correct tag on the correct screen
     {
         rule = { class = "Spotify" },
         properties = { screen = monitor_left, tag = "MUSIC" }
     },
 
-    -- Set rambox to always map on the music tag on the left screen
     {
         rule = { class = "rambox" },
         properties = { screen = monitor_left, tag = "MUSIC" }
     },
 
-    -- Set slack to always map on the web & work tag on the right screen
     {
         rule = { class = "Slack" },
-        properties = { screen = monitor_right, tags = {"WORK", "WEB"} }
+        properties = { screen = monitor_right, tags = {"WEB & CHAT"} }
     },
 
-    -- Set discord to always map on the web & work tag on the right screen
     {
         rule = { class = "discord" },
-        properties = { screen = monitor_right, tags = {"WORK", "WEB"} }
+        properties = { screen = monitor_right, tags = {"WEB & CHAT"} }
     }
 }
 

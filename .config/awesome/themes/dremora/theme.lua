@@ -314,17 +314,11 @@ function theme.at_screen_connect(s)
     -- RIGHT MONITOR
     elseif(s.index == monitor_right)
     then
-        awful.tag.add("WEB", {
+        awful.tag.add("WEB & CHAT", {
             icon   = "/home/smapo/.config/awesome/icons/web-icon.png",
             layout = awful.layout.layouts[1],
             screen = s,
             selected = true
-        })
-
-        awful.tag.add("WORK", {
-            icon   = "/home/smapo/.config/awesome/icons/spotilla-logo.png",
-            layout = awful.layout.layouts[1],
-            screen = s
         })
     else
         awful.tag(custom_tags, s, awful.layout.layouts[1])
