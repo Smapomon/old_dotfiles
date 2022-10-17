@@ -20,6 +20,7 @@ alias files="clear;ls -alh"
 alias s="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
+alias termconf="cd ~; clear; nvim .zshrc"
 
 # GIT ALIASES
 alias co='checkout'
@@ -167,3 +168,7 @@ eval "$(rbenv init -)"
 
 export PATH="$HOME/dev/android_studio/android-studio-2021.3.1.16-linux/android-studio/bin:$PATH"
 export PATH="/usr/java/jre1.8.0_341/bin:$PATH"
+alias luamake=/luamake
+export PATH="${HOME}/lsp_servers/lua-language-server/bin:${PATH}"
+
+if [ -f /usr/bin/screenfetch ]; then screenfetch; fi
