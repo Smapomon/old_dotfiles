@@ -308,12 +308,7 @@ function theme.at_screen_connect(s)
     -- RIGHT MONITOR
     elseif(s.index == monitor_right)
     then
-        awful.tag.add("work", {
-            layout   = awful.layout.layouts[1],
-            screen   = s
-        })
-
-        awful.tag.add("web", {
+        awful.tag.add("Web & Chat", {
             layout = awful.layout.layouts[1],
             screen = s,
             selected = true

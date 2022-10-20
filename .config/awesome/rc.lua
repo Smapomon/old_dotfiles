@@ -284,7 +284,15 @@ globalkeys = mytable.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ modkey }, "l", function () awful.util.spawn("/home/smapo/set_lockscreen.sh") end,
+    awful.key({ modkey }, "l", function ()
+      awful.screen.focus(monitor_center)
+      naughty.notify {
+        title    = "Lock Script",
+        text     = "Locking screen...",
+        position = "top_middle"
+      }
+      awful.util.spawn("/home/smapo/set_lockscreen.sh")
+    end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Show help
@@ -852,19 +860,19 @@ awful.rules.rules = {
     -- Set rambox to always map on the music tag on the left screen
     {
         rule = { class = "rambox" },
-        properties = { screen = monitor_left, tag = "music" }
+        properties = { screen = monitor_right, tags = {"Web & Chat"} }
     },
 
-    -- Set slack to always map on the work tag on the right screen
+    -- Set slack to always map on the right screen
     {
         rule = { class = "Slack" },
-        properties = { screen = monitor_right, tags = {"web", "work"} }
+        properties = { screen = monitor_right, tags = {"Web & Chat"} }
     },
 
-    -- Set discord to always map on the web tag on the right screen
+    -- Set discord to always map on the right screen
     {
         rule = { class = "discord" },
-        properties = { screen = monitor_right, tags = {"web", "work"} }
+        properties = { screen = monitor_right, tags = {"Web & Chat"} }
     }
 }
 
