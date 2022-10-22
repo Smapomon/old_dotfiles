@@ -977,7 +977,7 @@ update_volume(volume_widget)
 
 awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/set_mouse.sh")
 awful.spawn.with_shell("/home/".. user_home .."/shell_scripts/set_caps_escape.sh")
-awful.spawn.with_shell("compton")
+--awful.spawn.with_shell("compton")
 awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/set_monitor.sh")
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/autostart_apps.sh")

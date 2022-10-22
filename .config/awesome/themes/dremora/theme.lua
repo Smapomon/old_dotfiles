@@ -89,9 +89,9 @@ local monitor_right  = 3
 theme.wallpaper = function(s)
   -- get wp based on screen index
   local wallpapers = {
-    "/home/smapo/Pictures/Duckful.PNG",
-    "/home/smapo/Pictures/reckful-everland.jpg",
-    "/home/smapo/Pictures/byron-last-wave-dark.jpg",
+    "/home/smapo/wallpapers/Duckful.PNG",
+    "/home/smapo/wallpapers/reckful-everland.jpg",
+    "/home/smapo/wallpapers/byron-last-wave-dark.jpg",
   }
 
   return wallpapers[s.index]
