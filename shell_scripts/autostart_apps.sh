@@ -1,6 +1,6 @@
 nohup rambox &
 nohup slack &
-nohup discord &
+nohup discord-ptb &
 nohup solaar &
 nohup diodon
 echo "Apps started..."

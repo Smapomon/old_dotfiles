@@ -55,11 +55,13 @@ alias s="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 alias termconf="cd ~; clear; nvim .zshrc"
+alias :q="exit"
 
 # GIT ALIASES
 alias co='checkout'
 alias c_branch="git branch --show-current | tr -d '\n' | xclip -selection clipboard"
 alias dot_git='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+alias dgit='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 
 
 # NAVIGATION ALIASES
@@ -71,6 +73,7 @@ alias vimconf="cd ~/.config/nvim; clear; files; nvim init.lua"
 alias wmconf="cd ~/.config/awesome; clear; files; nvim rc.lua"
 alias kittyconf="cd ~/.config/kitty; clear; files; nvim kitty.conf"
 alias start_vpn="cd /usr/local/bin; clear; sudo sh goodaccess.sh -r smapo-linukka"
+alias mallu="cd ~/dev/gitlab/mallu-frontend/; clear; files"
 
 # NAVIGATE WINDOW CLIENTS
 alias fuzzy_win='wmctrl -i -a $(wmctrl -l | fzf | cut -d\  -f1); exit'
@@ -81,10 +84,12 @@ alias dspec="docker compose run be rspec ./spec/$1"
 alias dspec_all="docker compose run be rspec ./spec"
 alias jarru="clear; docker compose run be brakeman -A -z -I"
 
-# RAILS FUNCTIONS
+# DOCKER FUNCTIONS
 alias dcup="clear; rm tmp/pids/server.pid; docker compose up"
 alias dbld="docker compose build"
+alias docker_start="sudo systemctl start docker.service"
 
+# RAILS FUNCTIONS
 alias rcon="open_console"
 alias genmodel_no_migrate="genmodel_without_migration_function $1"
 alias genmodel="genmodel_with_migration_function $1"

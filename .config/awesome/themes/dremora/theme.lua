@@ -208,7 +208,7 @@ function update_volume(widget)
     -- Get volume for master with amixer
     local status = ''
     local volstring = "NO VOLUME DEVICE "
-    awful.spawn.easy_async("amixer -D pulse sget Master", function(stdout)
+    awful.spawn.easy_async("amixer sget Master", function(stdout)
         status = stdout
 
         -- Parse volume

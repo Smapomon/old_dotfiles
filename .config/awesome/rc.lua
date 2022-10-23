@@ -116,7 +116,7 @@ local terminal     = "kitty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "Google-chrome"
+local browser      = "Brave-browser-beta"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
@@ -482,7 +482,7 @@ globalkeys = mytable.join(
     --awful.key({ altkey }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-            os.execute(string.format("amixer -D pulse sset %s 1%%+", beautiful.volume.channel))
+            os.execute(string.format("amixer sset %s 1%%+", beautiful.volume.channel))
             os.execute("sleep 0.05")
             update_volume(volume_widget)
         end,
@@ -490,7 +490,7 @@ globalkeys = mytable.join(
     --awful.key({ altkey }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            os.execute(string.format("amixer -D pulse sset %s 1%%-", beautiful.volume.channel))
+            os.execute(string.format("amixer sset %s 1%%-", beautiful.volume.channel))
             os.execute("sleep 0.05")
             update_volume(volume_widget)
         end,
@@ -498,7 +498,7 @@ globalkeys = mytable.join(
     --awful.key({ altkey }, "m",
     awful.key({ }, "XF86AudioMute",
         function ()
-            os.execute(string.format("amixer -D pulse sset %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+            os.execute(string.format("amixer sset %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
             os.execute("sleep 0.1")
             update_volume(volume_widget)
         end,
@@ -855,6 +855,7 @@ awful.rules.rules = {
 
             class = {
                 "Google-chrome",
+                "Brave-browser-beta",
                 "Spotify"
             }
         },
@@ -977,7 +978,8 @@ update_volume(volume_widget)
 
 awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/set_mouse.sh")
 awful.spawn.with_shell("/home/".. user_home .."/shell_scripts/set_caps_escape.sh")
---awful.spawn.with_shell("compton")
+awful.spawn.with_shell("picom")
+awful.spawn.with_shell("nvidia-settings")
 awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/set_monitor.sh")
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("/home/".. user_home .. "/shell_scripts/autostart_apps.sh")
