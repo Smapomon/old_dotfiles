@@ -349,7 +349,7 @@ function theme.at_screen_connect(s)
         style    = {
             shape_border_width = 1,
             shape_border_color = '#777777',
-            shape              = gears.shape.rounded_rect,
+            shape              = gears.shape.rounded_bar,
         },
 
         layout   = {
@@ -373,6 +373,7 @@ function theme.at_screen_connect(s)
                 {
                     {
                         {
+                            id     = 'icon_role',
                             widget = wibox.widget.imagebox,
                         },
                         margins = 2,

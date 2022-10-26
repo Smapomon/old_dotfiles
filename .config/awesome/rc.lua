@@ -801,7 +801,7 @@ awful.rules.rules = {
             "discord",
             "Slack",
             "teams",
-            "rambox",
+            "Ferdium",
             "Gnome-calculator",
             "Solaar",
             "1Password",
@@ -870,12 +870,17 @@ awful.rules.rules = {
     },
 
     {
-        rule = { class = "rambox" },
+        rule = { class = "Ferdium" },
         properties = { screen = monitor_left, tag = "MUSIC" }
     },
 
     {
         rule = { class = "Slack" },
+        properties = { screen = monitor_right, tags = {"WEB & CHAT"} }
+    },
+
+    {
+        rule = { class = "Brave-browser-beta" },
         properties = { screen = monitor_right, tags = {"WEB & CHAT"} }
     },
 

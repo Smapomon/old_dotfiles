@@ -1,4 +1,4 @@
-nohup rambox &
+nohup ferdium &
 nohup slack &
 nohup discord-ptb &
 nohup solaar &
