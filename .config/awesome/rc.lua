@@ -802,7 +802,7 @@ awful.rules.rules = {
             "Slack",
             "teams",
             "Ferdium",
-            "Gnome-calculator",
+            "gnome-calculator",
             "Solaar",
             "1Password",
             "Nvidia-settings"
