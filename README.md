@@ -9,6 +9,7 @@ New ones will be added each time I start using a new OS.
 ### Important Branches
 ```
 main = ubuntu
+arch
 ```
 
 
@@ -43,6 +44,35 @@ dot_git config status.showUntrackedFiles no
 
 Finally add your new empty repo in github/gitlab to the bare repo remote.
 Instructions for this can be seen when creating a new empty repo in github for example.
+
+
+## Software/Tools
+### Pacman:
+```
+[
+  1password, arandr, awesome, bat, bluez, bluez-utils, brave-beta-bin, diodon,
+  discord-ptb, docker, docker-compose, ferdium-bin, git, gnome-keyring, i3lock,
+  imagemagick, neofetch, neovim, nitrogen, obs-studio, openvpn, paru, pavucontrol, picom-jonaburg-git, qbittorrent, rbenv, ripgrep, rofi, scrot, slack-desktop,
+  solaar, spotify, the_silver_searcher, vlc, xclip, zsh
+]
+```
+
+arandr:              GUI for handling some of the xrandr screen stuff
+bat:                 cat but better
+bluez:               bluetooth stuff
+diodon:              clipboard manager (history)
+ferdium-bin:         whatsapp
+neofetch:            show pretty system info on shell startup
+neovim:              text editor weapon of choice
+nitrogen:            manage wallpapers
+paru:                AUR helpers
+pavucontrol:         control sound
+picom-jonaburg-git:  compositor for transparency, and blur
+ripgrep:             very fast search
+rofi:                search and open task switcher
+scrot:               screenshot snipping
+solaar:              for monitoring logitech devices
+the_silver_searcher: more search stuff
 
 
 ## TODO
