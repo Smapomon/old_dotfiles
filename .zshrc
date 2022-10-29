@@ -12,6 +12,9 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# ------------ NVM SETUP ------------ #
+source /usr/share/nvm/init-nvm.sh
+
 # ------------ SSH SETUP ------------ #
 SSH_ENV="$HOME/.ssh/agent-environment"
 
