@@ -52,7 +52,8 @@ Instructions for this can be seen when creating a new empty repo in github for e
 [
   1password, arandr, awesome, bat, bluez, bluez-utils, brave-beta-bin, diodon,
   discord-ptb, docker, docker-compose, ferdium-bin, git, gnome-keyring, i3lock,
-  imagemagick, neofetch, neovim, nitrogen, obs-studio, openvpn, paru, pavucontrol, picom-jonaburg-git, qbittorrent, rbenv, ripgrep, rofi, scrot, slack-desktop,
+  imagemagick, man-db, man-pages, neofetch, neovim, nitrogen, obs-studio, openvpn,
+  paru, pavucontrol, picom-jonaburg-git, qbittorrent, rbenv, ripgrep, rofi, scrot, slack-desktop,
   solaar, spotify, the_silver_searcher, vlc, xclip, zsh
 ]
 ```
