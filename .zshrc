@@ -25,6 +25,7 @@ alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /d
 alias co='checkout'
 alias c_branch="git branch --show-current | xclip -selection clipboard"
 alias dot_git='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+alias dgit='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 alias gp='echo "pulling from branch...";git pull'
 
 
@@ -162,3 +163,5 @@ function install_with_bundle() {
 # Custom appends through shell
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+neofetch
