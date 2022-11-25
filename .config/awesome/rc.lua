@@ -587,7 +587,7 @@ globalkeys = mytable.join(
     -- rofi
     awful.key({ modkey }, "p", function ()
             awful.screen.focus(monitor_center)
-            os.execute(string.format("rofi -show %s",
+            os.execute(string.format('rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons',
             'combi'))
         end,
         {description = "show rofi", group = "launcher"}),
