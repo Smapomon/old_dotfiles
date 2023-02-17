@@ -60,14 +60,17 @@ alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /d
 alias termconf="cd ~; clear; nvim .zshrc"
 alias :q="exit"
 alias :qa="exit"
-alias sdn="sudo shutdown now"
+alias sdn="shutdown now"
 
 # GIT ALIASES
 alias co='checkout'
 alias c_branch="git branch --show-current | tr -d '\n' | xclip -selection clipboard"
 alias dot_git='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 alias dgit='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+alias gnb='publish_new_branch'
 
+# ARCH SPECIFIC ALIASES
+alias paru_updates="paru -Qu"
 
 # NAVIGATION ALIASES
 alias dev='cd ~/dev; clear; ls -alh'
@@ -99,6 +102,7 @@ alias rcon="open_console"
 alias genmodel_no_migrate="genmodel_without_migration_function $1"
 alias genmodel="genmodel_with_migration_function $1"
 alias genmigration="genmigrationonly_function $1"
+alias genjob="generate_bg_job $1"
 alias droutes="rails_routes"
 alias dcmigraationes="run_migrations"
 alias dcmigrationstatus="run_migration_status"
@@ -109,6 +113,11 @@ alias dbundle_install="install_with_bundle"
 
 
 # ------------ ALIAS FUNCTIONS ------------ #
+
+function publish_new_branch() {
+  ex_command="git checkout -b $1 && git push -u origin $1"
+  eval $ex_command
+}
 
 function rails_dir_map {
 	CDIR=${PWD##*/}
@@ -160,6 +169,13 @@ function genmigrationonly_function() {
 	docker_instance_name=$(rails_dir_map)
 	ex_command="docker compose run $docker_instance_name rails g migration $migrationname"
 	eval $ex_command;
+}
+
+function generate_bg_job() {
+  jobname=$1
+  docker_instance_name=$(rails_dir_map)
+  ex_command="docker compose run $docker_instance_name rails g job $jobname --no-test-framework"
+  eval $ex_command
 }
 
 function rails_routes() {
@@ -218,3 +234,9 @@ alias luamake=/luamake
 export PATH="${HOME}/lsp_servers/lua-language-server/bin:${PATH}"
 
 neofetch
+
+PATH="/home/smapo/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/smapo/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/smapo/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/smapo/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/smapo/perl5"; export PERL_MM_OPT;

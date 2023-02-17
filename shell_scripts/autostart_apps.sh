@@ -1,19 +1,20 @@
 nohup ferdium &
 nohup slack &
-nohup discord &
+nohup discord-ptb &
 nohup solaar &
-nohup diodon
+nohup diodon &
+nohup spotify
 echo "Apps started..."
 
-echo "Checking spotify state..."
+#echo "Checking spotify state..."
 
-runnin_instances=$(wmctrl -l | grep "Spotify" | wc -l)
-runnin_instances=${runnin_instances:-0}
+#runnin_instances=$(wmctrl -l | grep "Spotify" | wc -l)
+#runnin_instances=${runnin_instances:-0}
 
-if [ $runnin_instances -eq 0 ]; then
-	echo "$runnin_instances"
-	nohup spotify &
-	echo "Spotify started..."
-else
-	echo "Spotify already running..."
-fi
+#if [ $runnin_instances -eq 0 ]; then
+	#echo "$runnin_instances"
+	#nohup spotify &
+	#echo "Spotify started..."
+#else
+	#echo "Spotify already running..."
+#fi
