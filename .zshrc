@@ -61,6 +61,7 @@ alias termconf="cd ~; clear; nvim .zshrc"
 alias :q="exit"
 alias :qa="exit"
 alias sdn="shutdown now"
+alias restart_audio="systemctl --user restart pipewire.service"
 
 # GIT ALIASES
 alias co='checkout'
