@@ -196,8 +196,19 @@ local bat = lain.widget.bat({
 
 -- Last active app
 active_app = wibox.widget.textbox()
-function update_active_app(widget, current_app)
-  widget:set_markup(markup.font(theme.font, markup(gray, current_app) .. markup(gray, ' | ')))
+function update_active_app(widget, current_client)
+  local current_app  = current_client.class
+  local client_state = 'tiled'
+
+  if current_client.floating then
+    client_state = 'floating'
+  end
+
+  if current_client.maximized then
+    client_state = 'maximized'
+  end
+
+  widget:set_markup(markup.font(theme.font, markup(gray, current_app) .. markup(gray, ' >>> ') .. markup(gray, client_state) .. markup(gray, ' | ')))
 end
 
 -- ALSA volume
