@@ -7,9 +7,24 @@
 
 -- SYSTEM VARIABLES
 -- MONITOR ORDER (number is index)
-local monitor_left   = 2
+local monitor_left   = 1
 local monitor_center = 1
-local monitor_right  = 3
+local monitor_right  = 1
+
+local monitor_count = 0
+
+for s in screen do
+  monitor_count = monitor_count + 1
+end
+
+if monitor_count == 3 then
+  monitor_left  = 2
+  monitor_right = 3
+end
+
+-- if monitors are somehow fucked, use only the first one
+--monitor_left = 1
+--monitor_right = 1
 
 local user_home = 'smapo'
 
@@ -184,6 +199,8 @@ awful.util.tasklist_buttons = mytable.join(
 )
 
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+local nice = require("nice")
+nice()
 
 -- }}}
 
@@ -628,6 +645,12 @@ clientkeys = mytable.join(
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
+    awful.key({ modkey,           }, "space",  
+              function(c)
+                awful.titlebar.toggle(c)
+                update_active_app(active_app, c)
+              end,
+              {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen(c.screen.index-1)             end,
@@ -912,52 +935,6 @@ client.connect_signal("manage", function (c)
     c.shape = gears.shape.rounded_rect
 end)
 
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- Custom
-    if beautiful.titlebar_fun then
-        beautiful.titlebar_fun(c)
-        return
-    end
-
-    -- Default
-    -- buttons for the titlebar
-    local buttons = mytable.join(
-        awful.button({ }, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.move(c)
-        end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.resize(c)
-        end)
-    )
-
-    awful.titlebar(c, { size = 16 }) : setup {
-        { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
-            buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
-        },
-        { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.closebutton    (c),
-            layout = wibox.layout.fixed.horizontal()
-        },
-        layout = wibox.layout.align.horizontal
-    }
-    awful.titlebar.enable_tooltip = false
-end)
-
 client.connect_signal("focus", function(c)
     --For debugging
     --naughty.notify {
@@ -965,18 +942,20 @@ client.connect_signal("focus", function(c)
         --text = c.class
     --}
 
-    update_active_app(active_app, c.class)
+    update_active_app(active_app, c)
 
     c.border_color = beautiful.border_focus
 end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 client.connect_signal("property::floating", function(c)
-    if c.floating then
-        awful.titlebar.show(c)
-    else
-        awful.titlebar.hide(c)
-    end
+  awful.titlebar.show(c)
+  update_active_app(active_app, c)
+end)
+
+client.connect_signal("property::maximized", function(c)
+  --awful.titlebar.show(c)
+  update_active_app(active_app, c)
 end)
 
 -- Autostart Applications

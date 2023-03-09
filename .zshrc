@@ -60,7 +60,7 @@ alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /d
 alias termconf="cd ~; clear; nvim .zshrc"
 alias :q="exit"
 alias :qa="exit"
-alias sdn="sudo shutdown now"
+alias sdn="shutdown now"
 
 # GIT ALIASES
 alias co='checkout'

@@ -1,5 +1,5 @@
 # grep all matching mouse pointer ids
-str=$(xinput list | grep "G Pro.*pointer" | cut -f2 -d"=" | tr -s ' ' | cut -f1 -d '[' | grep -Eo '[0-9]{1,4}')
+str=$(xinput list | grep "G Pro.*pointer\|Logitech MX Master 3.*pointer" | cut -f2 -d"=" | tr -s ' ' | cut -f1 -d '[' | grep -Eo '[0-9]{1,4}')
 
 # set ifs to find new lines
 IFS=$'
