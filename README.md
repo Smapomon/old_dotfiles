@@ -8,8 +8,10 @@ New ones will be added each time I start using a new OS.
 
 ### Important Branches
 ```
-main = ubuntu
-arch
+arch          = actual main branch
+arch-laptop   = work laptop
+ubuntu        = laptop
+docked-laptop = ubuntu
 ```
 
 
