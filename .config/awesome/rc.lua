@@ -198,14 +198,25 @@ beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv
 local nice = require("nice")
 nice {
   titlebar_color = "#282a36",
+  titlebar_font = 'Fira Code Retina',
+
+  --close_color = "#ee4266",
+  --minimize_color = "#ffb400",
+  --maximize_color = "#4CBB17",
+  floating_color = "#3F3F3F",
+  ontop_color    = "#3F3F3F",
+  sticky_color   = "#3F3F3F",
+
+
+
   context_menu_theme = {
     width = 300,
   },
 
-  titelbar_items = {
-    left   = {"close", "minimize", "maximize"},
-    middle = {"title"},
-    right  = {},
+  titlebar_items = {
+    left  = "ontop",
+    middle = "title",
+    right   = {"minimize", "maximize", "close"},
   },
 }
 
@@ -233,27 +244,6 @@ awful.util.mymainmenu = freedesktop.menu.build {
         -- other triads can be put here
     }
 }
-
--- Hide the menu when the mouse leaves it
---[[
-awful.util.mymainmenu.wibox:connect_signal("mouse::leave", function()
-    if not awful.util.mymainmenu.active_child or
-       (awful.util.mymainmenu.wibox ~= mouse.current_wibox and
-       awful.util.mymainmenu.active_child.wibox ~= mouse.current_wibox) then
-        awful.util.mymainmenu:hide()
-    else
-        awful.util.mymainmenu.active_child.wibox:connect_signal("mouse::leave",
-        function()
-            if awful.util.mymainmenu.wibox ~= mouse.current_wibox then
-                awful.util.mymainmenu:hide()
-            end
-        end)
-    end
-end)
---]]
-
--- Set the Menubar terminal for applications that require it
---menubar.utils.terminal = terminal
 
 -- }}}
 
@@ -835,7 +825,8 @@ awful.rules.rules = {
             "1Password",
             "Nvidia-settings",
             "Postman",
-            "Image Lounge"
+            "Image Lounge",
+            "dolphin"
         },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -961,7 +952,7 @@ client.connect_signal("property::floating", function(c)
 end)
 
 client.connect_signal("property::maximized", function(c)
-  awful.titlebar.show(c)
+  --awful.titlebar.show(c)
   update_active_app(active_app, c)
 end)
 

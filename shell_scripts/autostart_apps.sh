@@ -2,8 +2,7 @@ nohup ferdium &
 nohup slack &
 nohup discord-ptb &
 nohup solaar &
-nohup diodon &
-nohup spotify
+nohup diodon
 echo "Apps started..."
 
 #echo "Checking spotify state..."
