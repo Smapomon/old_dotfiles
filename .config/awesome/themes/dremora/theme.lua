@@ -82,13 +82,14 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 
 
 -- MONITOR ORDER (number is index)
-local monitor_left   = 2
+local monitor_left   = 3
 local monitor_center = 1
-local monitor_right  = 3
+local monitor_right  = 2
 
 theme.wallpaper = function(s)
   -- get wp based on screen index
   local wallpapers = {
+    --"/home/smapo/wallpapers/Trump-Wrong-1024.png",
     "/home/smapo/wallpapers/Duckful.PNG",
     "/home/smapo/wallpapers/reckful-everland.jpg",
     "/home/smapo/wallpapers/byron-last-wave-dark.jpg",

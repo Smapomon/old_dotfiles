@@ -62,6 +62,9 @@ alias :q="exit"
 alias :qa="exit"
 alias sdn="shutdown now"
 alias restart_audio="systemctl --user restart pipewire.service"
+alias caps_escape="~/shell_scripts/set_caps_escape.sh"
+alias set_mouse="~/shell_scripts/set_mouse.sh"
+alias print_disks="lsblk -e7,254 -A -o NAME,FSTYPE,LABEL,MOUNTPOINT,FSUSE%,FSSIZE | grep -v 'nvme1n1.*\|nvme0n1p3.*\|nvme0n1p4.*'"
 
 # GIT ALIASES
 alias co='checkout'
@@ -111,6 +114,9 @@ alias dcrollback="rollback_migration"
 alias dbundle="run_bundle"
 alias dbundle_install="install_with_bundle"
 
+
+# File operations
+alias ytdl="yt-dlp -o '%(title)s.%(ext)s' "
 
 
 # ------------ ALIAS FUNCTIONS ------------ #
@@ -233,6 +239,7 @@ export PATH="$HOME/dev/android_studio/android-studio-2021.3.1.16-linux/android-s
 export PATH="/usr/java/jre1.8.0_341/bin:$PATH"
 alias luamake=/luamake
 export PATH="${HOME}/lsp_servers/lua-language-server/bin:${PATH}"
+export PATH=/usr/local/bin/aws_completer:$PATH
 
 neofetch
 
@@ -241,3 +248,7 @@ PERL5LIB="/home/smapo/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
 PERL_LOCAL_LIB_ROOT="/home/smapo/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/smapo/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/smapo/perl5"; export PERL_MM_OPT;
+
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws
