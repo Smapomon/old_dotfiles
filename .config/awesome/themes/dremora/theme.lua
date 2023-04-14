@@ -90,7 +90,7 @@ theme.wallpaper = function(s)
   -- get wp based on screen index
   local wallpapers = {
     --"/home/smapo/wallpapers/Trump-Wrong-1024.png",
-    "/home/smapo/wallpapers/Duckful.PNG",
+    "/home/smapo/wallpapers/Duckful (2).png",
     "/home/smapo/wallpapers/reckful-everland.jpg",
     "/home/smapo/wallpapers/byron-last-wave-dark.jpg",
   }
