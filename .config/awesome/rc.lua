@@ -127,7 +127,7 @@ local terminal     = "kitty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "Brave-browser-beta"
+local browser      = "Brave-browser"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
@@ -878,7 +878,7 @@ awful.rules.rules = {
 
             class = {
                 "Google-chrome",
-                "Brave-browser-beta",
+                "Brave-browser",
                 "Spotify"
             }
         },
@@ -903,7 +903,7 @@ awful.rules.rules = {
     },
 
     {
-        rule = { class = "Brave-browser-beta" },
+        rule = { class = "Brave-browser" },
         properties = { screen = monitor_right, tags = {"WEB & CHAT"} }
     },
 
