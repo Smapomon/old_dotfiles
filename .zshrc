@@ -5,6 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# XDG Variables
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+
 # setup language variables
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -245,6 +251,23 @@ export PATH="/usr/java/jre1.8.0_341/bin:$PATH"
 alias luamake=/luamake
 export PATH="${HOME}/lsp_servers/lua-language-server/bin:${PATH}"
 export PATH=/usr/local/bin/aws_completer:$PATH
+
+
+##### XDG DIR CHANGES #####
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
+export RBENV_ROOT="$XDG_DATA_HOME"/rbenv
+export SOLARGRAPH_CACHE="$XDG_CACHE_HOME"/solargraph
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+##### XDG DIR CHANGES #####
+
 
 neofetch
 
